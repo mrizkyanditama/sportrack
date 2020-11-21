@@ -1,0 +1,107 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "296d67c558a920e4f9e8891577a9bcfe",
+    "entities": [
+      {
+        "tableName": "Exercise",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`page` INTEGER NOT NULL, `exerciseId` INTEGER PRIMARY KEY AUTOINCREMENT, `dateOfExercise` INTEGER NOT NULL, `minutesExercise` INTEGER NOT NULL, `caloriesBurned` INTEGER NOT NULL, `sportTypeDoneId` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "page",
+            "columnName": "page",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "exerciseId",
+            "columnName": "exerciseId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "dateOfExercise",
+            "columnName": "dateOfExercise",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "minutesExercise",
+            "columnName": "minutesExercise",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "caloriesBurned",
+            "columnName": "caloriesBurned",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sportTypeDoneId",
+            "columnName": "sportTypeDoneId",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "exerciseId"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "SportType",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`sportTypeId` INTEGER NOT NULL, `name` TEXT NOT NULL, `imgPath` TEXT NOT NULL, `caloriesBurnedPerMinute` INTEGER NOT NULL, PRIMARY KEY(`sportTypeId`))",
+        "fields": [
+          {
+            "fieldPath": "sportTypeId",
+            "columnName": "sportTypeId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "imgPath",
+            "columnName": "imgPath",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "caloriesBurnedPerMinute",
+            "columnName": "caloriesBurnedPerMinute",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "sportTypeId"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [
+      {
+        "viewName": "ExerciseSportType",
+        "createSql": "CREATE VIEW `${VIEW_NAME}` AS SELECT Exercise.dateOfExercise, Exercise.minutesExercise, Exercise.caloriesBurned,SportType.name AS sportName, SportType.imgPath as imgPath FROM Exercise INNER JOIN SportType ON Exercise.sportTypeDoneId = SportType.sportTypeId"
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '296d67c558a920e4f9e8891577a9bcfe')"
+    ]
+  }
+}

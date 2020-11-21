@@ -1,0 +1,8 @@
+<resources>
+  <string name="app_name">Sportrack</string>
+    <string name="mulai">Start</string>
+  <string name="potensi_kalori_terbakar">Calory burned potential</string>
+  <string name="mulai_berolahraga">Start working out</string>
+  <string name="pilih_olahraga">Choose sport</string>
+  <string name="start_stopwatch">Start</string>
+</resources>

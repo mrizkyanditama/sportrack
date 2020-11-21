@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Sportrack</string>
+    <string name="mulai">Mulai</string>
+    <string name="potensi_kalori_terbakar">Potensi kalori terbakar</string>
+    <string name="mulai_berolahraga">Mulai berolahraga</string>
+    <string name="pilih_olahraga">Pilih Olahraga</string>
+    <string name="start_stopwatch">Mulai Olahraga</string>
+</resources>

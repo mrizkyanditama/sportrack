@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="listener"
+            type="id.ac.ui.cs.mobileprogramming.mrizkyanditama.sportrack.ui.adapter.SportTypeAdapter.SportTypeListener" />
+
+        <variable
+            name="sporttype"
+            type="id.ac.ui.cs.mobileprogramming.mrizkyanditama.sportrack.model.SportType" />
+
+    </data>
+
+
+    <com.google.android.material.card.MaterialCardView
+        app:strokeColor="@color/md_green_100"
+        app:strokeWidth="3dp"
+        android:id="@+id/cardSportTypeView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="6dp"
+        android:background="@color/background800"
+        app:cardBackgroundColor="#27D8D5B6"
+        app:cardCornerRadius="14dp"
+        app:cardElevation="4dp"
+        android:focusable="true"
+        android:clickable="true"
+        android:onClick="@{() -> listener.onClick(sporttype)}"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="224dp"
+            android:layout_height="200dp"
+            tools:ignore="UnusedAttribute"
+            >
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/exercise_image"
+                android:layout_width="145dp"
+                android:layout_height="135dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="29dp"
+                android:scaleType="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:sportTypeImage="@{sporttype.imgPath}" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/exercise_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:elevation="4dp"
+                android:maxLines="1"
+                android:text="@{sporttype.name}"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.502"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/exercise_image"
+                tools:text="Lari" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+</layout>
