@@ -37,11 +37,11 @@ object PersistenceModule {
   lateinit var appDatabase: AppDatabase
 
   private val listSportType = listOf<String>(
-    "https://imgur.com/zKvxmoq.png",
-    "https://imgur.com/jwDMKmO.png",
-    "https://imgur.com/KqbW4TV.png",
-    "https://imgur.com/b2nNdlF.png",
-    "https://imgur.com/OsRdPJO.png"
+    "https://imgur.com/KliL0Ga.png",
+    "https://imgur.com/U05qqhr.png",
+    "https://imgur.com/3oel0y9.png",
+    "https://imgur.com/cfAwGI8.png",
+    "https://imgur.com/ySBdrr4.png"
     )
 
   @Provides
