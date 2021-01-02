@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.new_exercise.NewExerciseActivity">
+
+    <data>
+
+        <variable
+            name="vm"
+            type= "id.ac.ui.cs.mobileprogramming.mrizkyanditama.sportrack.ui.news.NewsViewModel"/>
+
+        <variable
+            name="adapter"
+            type="id.ac.ui.cs.mobileprogramming.mrizkyanditama.sportrack.ui.adapter.NewsAdapter" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:elevation="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <include
+                android:id="@+id/main_toolbar"
+                layout="@layout/toolbar_home" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:clipToPadding="false"
+            android:fadeScrollbars="false"
+            android:padding="6dp"
+            android:scrollbarStyle="outsideOverlay"
+            android:scrollbarThumbVertical="@drawable/scrollbar"
+            android:scrollbars="vertical"
+            app:adapter="@{adapter}"
+            app:adapterNewsList="@{vm.newsListLiveData}"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+            app:toast="@{vm.toastLiveData}"
+            tools:listitem="@layout/row_news_article" />
+
+        <!-- Progress and empty views -->
+<!--        <include-->
+<!--            android:id="@+id/progressLayout"-->
+<!--            layout="@layout/progress_layout"-->
+<!--            tools:visibility="invisible" />-->
+
+<!--        <include-->
+<!--            android:id="@+id/emptyLayout"-->
+<!--            layout="@layout/empty_layout"-->
+<!--            tools:visibility="invisible" />-->
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation"
+            style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            app:menu="@menu/bottom_navigation_menu" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -6,4 +6,25 @@
     <string name="mulai_berolahraga">Mulai berolahraga</string>
     <string name="pilih_olahraga">Pilih Olahraga</string>
     <string name="start_stopwatch">Mulai Olahraga</string>
+    <string name="home">Beranda</string>
+    <string name="news">Berita</string>
+    <string name="no_news">Tidak ada berita</string>
+    <string name="news_image_desc">Gambar berita</string>
+    <string name="news_image">Gambar berita</string>
+    <string name="str_test_date">22/02/2017</string>
+
+    <string name="show_camera">Tunjukkan kamera</string>
+    <string name="camera_unavailable"><b>Kamera tidak bisa dibuka.</b>\nKamera tidak dapat dibuka, hal ini dapat terjadi karena tidak terdapat izin untuk mengaksesnya.</string>
+    <string name="intro">Pada bagian ini Anda dapat memfoto hasil workout Anda.\nTekan tombol di bawah untuk memberikan permission untuk memfoto.</string>
+    <string name="open_camera_preview">Buka Camera Preview</string>
+    <string name="intro_message">Post workout photo</string>
+    <string name="camera_access_required">Akses kamera diperlukan untuk mengakses kamera.</string>
+    <string name="ok">OK</string>
+    <string name="camera_permission_not_available">Tidak ada izin untuk mengakses kamera. Meminta izin.</string>
+    <string name="camera_permission_available">Terdapat izin akses kamera. Memulai kamera.</string>
+    <string name="camera_permission_granted">Terdapat izin akses kamera. Memulai kamera.</string>
+    <string name="camera_permission_denied">Akses izin kamera ditolak.</string>
+    <string name="camera">Camera</string>
+    <string name="is_connected">Tidak ada sinyal, mohon tunggu hingga tersambung ke internet</string>
+    <string name="refresh">Refresh</string>
 </resources>

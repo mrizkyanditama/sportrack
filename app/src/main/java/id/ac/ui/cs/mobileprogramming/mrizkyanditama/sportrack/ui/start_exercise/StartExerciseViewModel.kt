@@ -26,8 +26,9 @@ class StartExerciseViewModel @AssistedInject constructor(
     var stopwatchTimeLiveData: MutableLiveData<String> = MutableLiveData("00:00:000")
     var buttonTextLiveData: MutableLiveData<String> = MutableLiveData("Mulai Olahraga")
 
-    var isLoading: ObservableBoolean = ObservableBoolean(false)
-    var isDone: LiveData<Boolean> = MutableLiveData(false)
+    var notificationMessage: MutableLiveData<String> = MutableLiveData("")
+    var isNotification: MutableLiveData<Boolean> = MutableLiveData(false)
+    var isCalled: MutableLiveData<Boolean> = MutableLiveData(false)
     var isFinished: MutableLiveData<Boolean> = MutableLiveData(false)
 
 
@@ -49,6 +50,8 @@ class StartExerciseViewModel @AssistedInject constructor(
         fun create(sportType: SportType): StartExerciseViewModel
     }
 
+    external fun totalCalories(timeSpent: Double, caloriesBurnedPerMinute: Double): Double
+
     init {
         Timber.d("init StartExerciseViewModel")
         sportTypeExercise = sportType
@@ -65,6 +68,15 @@ class StartExerciseViewModel @AssistedInject constructor(
             Seconds = (UpdateTime / 1000).toInt()
 
             Minutes = Seconds / 60
+
+            if(Minutes >= 1){
+                if(!isCalled.value!!){
+                    notificationMessage.postValue("Anda telah berolahraga cukup lama, tetap semangat!")
+                    isNotification.postValue(true)
+                    isCalled.postValue(true)
+                }
+
+            }
 
             Seconds = Seconds % 60
 
@@ -113,7 +125,8 @@ class StartExerciseViewModel @AssistedInject constructor(
             this.exerciseRepository.insertExercise(Exercise(
                 exerciseId = null,
                 dateOfExercise = Calendar.getInstance().time,
-                caloriesBurned = minutesExercise * sportTypeExercise.caloriesBurnedPerMinute,
+                caloriesBurned = totalCalories(minutesExercise.toDouble(), sportTypeExercise.caloriesBurnedPerMinute.toDouble()).toLong(),
+//                caloriesBurned = minutesExercise * sportTypeExercise.caloriesBurnedPerMinute,
                 sportTypeDoneId = sportTypeExercise.sportTypeId,
                 minutesExercise = minutesExercise),onSuccess = {isFinished.postValue(true)})
 //            isDone = launchOnViewModelScope {
@@ -137,6 +150,9 @@ class StartExerciseViewModel @AssistedInject constructor(
             override fun <T : ViewModel?> create(modelClass: Class<T>): T {
                 return assistedFactory.create(sportType) as T
             }
+        }
+        init {
+            System.loadLibrary("native-lib")
         }
     }
 

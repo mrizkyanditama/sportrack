@@ -5,6 +5,11 @@ apply plugin: 'dagger.hilt.android.plugin'
 apply plugin: 'kotlin-kapt'
 apply from: '../dependencies.gradle'
 
+// Read credentials
+def credentialFile = rootProject.file("credentials.properties")
+def credentialProperty = new Properties()
+credentialProperty.load(new FileInputStream(credentialFile))
+
 android {
     compileSdkVersion 30
 
@@ -16,6 +21,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "NEWS_API_KEY", credentialProperty['NEWS_API_KEY'])
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments += ["room.schemaLocation" : "$projectDir/schemas".toString()]
@@ -46,9 +52,15 @@ android {
     buildFeatures {
         dataBinding true
     }
+    externalNativeBuild {
+        cmake {
+            path file('CMakeLists.txt')
+        }
+    }
     androidExtensions {
         experimental = true
     }
+    ndkVersion '22.0.7026061'
 
 }
 
